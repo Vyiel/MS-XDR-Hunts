@@ -1,0 +1,24 @@
+Detection of possible kerberoasting or the future possibility of being victimized with one
+
+Kerberoasting basically involves retrieving a ticket encrypted by the SPN's NTLM hash, so that it can be cracked offline. 
+Note: Having the cracking tools inside the system isn't mandatory, so detection cracking tools such as Rubeus or Impacket is futile.
+
+Caveat: The same activity, that is requesting and retrieving a ticket that encrypted by SPN's hash is also very much normal activity. 
+The only difference is, that instead of using the ticket, adversaries crack it offline retrieving the password.
+
+Then why detection and how? Well, the encryption of those tickets should use encryption standards such as AES 128 or 256 bit. But tickets encrypted with such encryption makes it hard for the adversary to crack.
+Thus, the adversaries force the encryption down to be RC4, which is significantly easier to crack, unless the password to the service account itself is great.
+
+MDE (I) has a table IdentityLogonEvents, which directly detect the encryption type, which we can scout for.
+
+IdentityLogonEvents
+| extend Time = bin(Timestamp, 1s)
+| where Application == "Active Directory"
+| where Protocol == @"Kerberos"
+| extend ParsedFields = parse_json(AdditionalFields)
+| extend TargetSPN = tostring(ParsedFields.Spns)
+| extend EncryptionType = tostring(ParsedFields.EncryptionType)
+| where EncryptionType contains @"rc4hmac"
+| project Time, DeviceName, IPAddress, DestinationDeviceName, TargetSPN, AccountName, EncryptionType
+| summarize RequestCount = count(), DistinctRequestors = dcount(AccountName) by TargetSPN, DeviceName
+| sort by RequestCount desc
