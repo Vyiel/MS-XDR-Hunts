@@ -1,0 +1,17 @@
+let ProcessTable = 
+    DeviceProcessEvents
+    | where ProcessVersionInfoInternalFileName == "whoami.exe"
+    | where ActionType == "ProcessCreated"
+    | where ProcessTokenElevation == "TokenElevationTypeFull"
+    | where InitiatingProcessFileName has_any ("powershell", "cmd", "wmi", "wscript")
+    | extend ProcessTime = bin(Timestamp, 1s)
+    | project ProcessTime, DeviceName, ActionType, ProcessTokenElevation, InitiatingProcessFileName;
+DeviceEvents
+| join kind=inner ( ProcessTable ) on DeviceName
+| extend DeviceTime = bin(Timestamp, 1s)
+| where DeviceTime == ProcessTime
+| extend ParsedFields = parse_json(AdditionalFields)
+| extend DumpCredsCommand = tostring(ParsedFields.Command)
+| extend ifMemCpyAddr = tostring(ParsedFields.Command)
+| where DumpCredsCommand has_any ("Mimikatz", "DumpCreds") 
+or ifMemCpyAddr has_any ("memcpyAddr", "Get-ProcAddress", "WriteProcessMemory", "CreateRemoteThread")
