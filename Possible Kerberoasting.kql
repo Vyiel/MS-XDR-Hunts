@@ -18,7 +18,9 @@ IdentityLogonEvents
 | extend ParsedFields = parse_json(AdditionalFields)
 | extend TargetSPN = tostring(ParsedFields.Spns)
 | extend EncryptionType = tostring(ParsedFields.EncryptionType)
-| where EncryptionType contains @"rc4hmac"
+| where isnotempty(TargetSPN)
+| where TargetSPN !contains @"krbtgt"
+| where EncryptionType contains @"rc4"
 | project Time, DeviceName, IPAddress, DestinationDeviceName, TargetSPN, AccountName, EncryptionType
 | summarize RequestCount = count(), DistinctRequestors = dcount(AccountName) by TargetSPN, DeviceName
 | sort by RequestCount desc
