@@ -1,0 +1,42 @@
+// Detection of Office applications executing possible malicious activities via Macro.
+// 
+// This query can detect both excel 4.0 and VBA technique macros, that used for usually malicious activities, but this query is rather optimized for production instead of effiency.
+// This will NOT detect ALL and ONLY TRUE POSITIVE activity, but will pick up on noise. 
+// 
+// As you can see, I have manually listed out the processes we are monitoring for as these are the processes mostly used for malicious activities with Macro but also can be used for usual activities. Which it is,
+// have to be validated manually.
+// 
+// This is again not a truly fundamental query and depends a lot on static file and process names as I said, this is optimized for production where writing a truly fundamentally and dynamic query will use a lot of resources, 
+// thus failing to execute at all. 
+// 
+let Extensions = dynamic( ["docm", "dotm", "xlsm", "xltm", "pptm", "potm", "ppsm"] );
+let OfficeApps = dynamic( ["powerpnt", "excel", "winword"] );
+let MonitoredProcesses = dynamic ( ["cmd.exe",
+    "powershell.exe",
+    "powershell_ise.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "certutil.exe",
+    "bitsadmin.exe",
+    "regsvr32.exe",
+    "rundll32.exe",
+    "wmic.exe",
+    "msbuild.exe",
+    "ftp.exe",
+    "curl.exe",
+    "wget.exe",
+    "python.exe",
+    "java.exe",
+    "javaw.exe",
+    "csc.exe",
+    "msiexec.exe"] );
+DeviceProcessEvents
+    | extend DevProcTime = bin(Timestamp, 1s)
+    | where InitiatingProcessVersionInfoInternalFileName has_any (OfficeApps)
+    | extend CLISplit = split(InitiatingProcessCommandLine, "\\")
+    | extend ExtractedFileName = CLISplit[array_length(CLISplit) - 1]
+    | where tostring(ExtractedFileName) has_any (Extensions)
+    | where FileName has_any (MonitoredProcesses)
+    | project-away CLISplit
+| project DevProcTime, InitiatingProcessFileName, ExtractedFileName, FileName, InitiatingProcessCommandLine, ProcessCommandLine
