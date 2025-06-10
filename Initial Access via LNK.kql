@@ -1,0 +1,25 @@
+// Detection of Execution of LNK files, that might be malicious based on unusual processes and relationships.
+// 
+// LNK Files are shortcuts, made artifically by creating Wscript.Shell Object to CreateShortcut(). 
+// These files are artifically modified to call a malware or a powershell/cmd or any LOLBIN, to directly execute.
+// Can be given a custom icon, thus and finally be launched either directly, or by embedding it into other files such Word or Spreadsheet documents.
+// 
+// The qyery has been built on the fundamental observation that LNKs are treated as URLs, which can be capitalized to check for, that doesn't include HTTP.
+// Once those processes are figured out, it's merged with DeviceProcessEvents to check for children which might be malicious or unusual.
+// 
+let LolBins = dynamic( [@"powershell.exe", @"cmd.exe", @"wscript.exe", @"mshta.exe", @"certutil.exe", @"bitsadmin", @"curl.exe", @"wget.exe", @"msiexec.exe", @"msbuild.exe"] );
+let LNKevents = 
+    DeviceEvents
+    | extend DevTime = bin(Timestamp, 1s)
+    | where DeviceName contains "thd"
+    | where ActionType == "BrowserLaunchedToOpenUrl"
+    | where RemoteUrl endswith @".lnk" and RemoteUrl !contains "http"
+    | where RemoteUrl has_any (@"desktop", @"downloads", @"public", @"documents")
+    | project DevTime, DeviceId, RemoteUrl, devInitProcId = InitiatingProcessId;
+DeviceProcessEvents
+| join kind=inner LNKevents on DeviceId
+| extend DevProcTime = bin(Timestamp, 1s)
+| where DevProcTime == DevTime
+| where InitiatingProcessId == devInitProcId
+| where FileName has_any (LolBins)
+| project DevProcTime, DeviceName, AccountName, FileName, ProcessCommandLine, FolderPath, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessParentFileName, RemoteUrl
