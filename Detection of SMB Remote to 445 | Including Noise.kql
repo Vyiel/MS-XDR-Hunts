@@ -14,7 +14,7 @@ let logons =
     DeviceLogonEvents
     | extend DevLogTime = bin(Timestamp, 1s)
     | where LogonType == "Network"
-    | project DevLogTime, DeviceId, DeviceName, LogonAction = ActionType, AccountDomain, Protocol, DevLogRemoteIP = RemoteIP, AccountName;
+    | project DevLogTime, DeviceId, DeviceName, LogonStatus = ActionType, AccountDomain, Protocol, DevLogRemoteIP = RemoteIP, AccountName;
 // 
 let SMBnet =
     DeviceNetworkEvents
@@ -28,4 +28,4 @@ SMBnet
 | join kind=inner logons on DeviceId
 | where LocalIP == DevLogRemoteIP
 | where abs( datetime_diff('second', DevNetTime, DevLogTime) ) <= 5
-| summarize count() by DevNetTime, DeviceName, TargetDeviceIP = RemoteIP, RemotePort, InitiatorDeviceIP = LocalIP, ActionType, Direction, LogonAction, Protocol, AccountName
+| summarize count() by DevNetTime, DeviceName, TargetDeviceIP = RemoteIP, RemotePort, InitiatorDeviceIP = LocalIP, ActionType, Direction, LogonStatus, Protocol, AccountName
