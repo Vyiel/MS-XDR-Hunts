@@ -1,0 +1,31 @@
+// Detection of SMB connections flowing inwards on port 445. Includes usual activities, and activities performed over netexec or impacket.
+// 
+// This is somewhat of a sketchy detection, as connecting to SMB from network devices is pretty common for usual activities aswell as connections done via tools like netexec or impacket.
+// It would have obviously been better if some processes were spanwed after the connect, but we can't ignore the connects only either.
+// 
+// In a corporate enviornment, if you go by DeviceLogonEvents or DeviceNetworkEvents even with filters, you will get above 30K results even for 7 days, which will yield in almost no actionable items.
+// 
+// Thus, this query intentionally shimmers down the excessive noise and make it ingestable, and through multiple tests, I concluded that important information isn't left out completely atleast.
+// 
+// Here I have taken all the logonEvents, and checked within the approximate time frame within DeviceNetworkEvents filtering to port 445 when the direction is INBOUND.
+// Please do add/remove to the query as needed. Contribution is most welcome.
+//
+let logons = 
+    DeviceLogonEvents
+    | extend DevLogTime = bin(Timestamp, 1s)
+    | where LogonType == "Network"
+    | project DevLogTime, DeviceId, DeviceName, LogonAction = ActionType, AccountDomain, Protocol, DevLogRemoteIP = RemoteIP, AccountName;
+// 
+let SMBnet =
+    DeviceNetworkEvents
+    | extend DevNetTime = bin(Timestamp, 1s)
+    | where RemotePort == "445"
+    | extend Direction = tostring(parse_json(AdditionalFields).direction)
+    | where Direction == "In"
+    | project DevNetTime, DeviceId, RemoteIP, RemotePort, LocalIP, LocalPort, ActionType, Direction;
+//
+SMBnet
+| join kind=inner logons on DeviceId
+| where LocalIP == DevLogRemoteIP
+| where abs( datetime_diff('second', DevNetTime, DevLogTime) ) <= 5
+| summarize count() by DevNetTime, DeviceName, TargetDeviceIP = RemoteIP, RemotePort, InitiatorDeviceIP = LocalIP, ActionType, Direction, LogonAction, Protocol, AccountName
