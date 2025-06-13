@@ -1,0 +1,54 @@
+// Detection of Unusuality in SMB Remote connects to port 445.
+// 
+// Te first part of the query to figure out Remote in events towards port 445 is already established in another query in this repository. 
+// In this case, I have figured out the SMB Connections first regardless of successful or unsuccessful logins, which can be tuned out even more to get only successful/unsuccessful actions.
+// 
+// This query should work in a environment with good amount of data so that Mean, StdDev calculation can be done properly with a huge population, and finally, I am checking
+// based on logon counts for accounts, to understand the deviation from mean.
+// 
+// Obviously, me being a savant level bad mathematics student, I am sure this query might be a blunder someday, but until I myself or/and anyone of you figure out a better way to do this,
+// here's the query...
+// 
+let logons =  
+    DeviceLogonEvents
+    | extend DevLogTime = bin(Timestamp, 1s)
+    | where LogonType == "Network"
+    | project DevLogTime, DeviceId, DeviceName, LogonStatus = ActionType, AccountDomain, Protocol, DevLogRemoteIP = RemoteIP, AccountName;
+// 
+let SMBnet = 
+    DeviceNetworkEvents
+    | extend DevNetTime = bin(Timestamp, 1s)
+    | where RemotePort == "445"
+    | extend Direction = tostring(parse_json(AdditionalFields).direction)
+    | where Direction == "In"
+    | project DevNetTime, DeviceId, RemoteIP, RemotePort, LocalIP, LocalPort, ActionType, Direction;
+// 
+let baseLine = materialize ( 
+    SMBnet
+    | join kind=inner logons on DeviceId
+    | where LocalIP == DevLogRemoteIP
+    | where abs( datetime_diff('second', DevNetTime, DevLogTime) ) <= 5
+    | where isnotempty(AccountName)
+    | summarize LogonCount = count() by AccountName);
+// 
+let Stats = 
+    baseLine
+    | summarize Mean = avg(LogonCount), StDev = stdev(LogonCount);
+//
+Stats
+| extend joiner=1
+| join kind=inner (baseLine | extend joiner=1) on joiner
+| extend ZscoreDirectional = ((LogonCount - Mean) / StDev)
+| extend ZscoreOutLiers = abs(ZscoreDirectional)
+| extend Unusualness = case(
+    ZscoreOutLiers > 5, "Extreme",
+    ZscoreOutLiers > 3, "Severe",
+    ZscoreOutLiers > 2, "Moderate",
+    "Normal")
+| extend UnusualnessReason= case(
+    ZscoreDirectional > 0, "High Relevance",
+    ZscoreDirectional < 0, "Low Relevance",
+    ""
+    )
+| where ZscoreOutLiers > 2
+| project-away Mean, StDev, ZscoreOutLiers, joiner, joiner1, ZscoreDirectional
