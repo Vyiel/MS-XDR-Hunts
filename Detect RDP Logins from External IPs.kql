@@ -1,0 +1,17 @@
+// Detection of Remote Desktop Logins from External IPs.
+// 
+// This is also a fairly simple query, but only if done right.
+// Previously, I used to check for inbound to port 3389 connections, which wasn't wrong and can be used eitherway, but a better and more fundamental hypothesis, would be to test for RemoteInteractive (Type10) login.
+// 
+// RDP is a combination of both Network login but also an interactive login and MS has a default type for it, I.E Type 10 or by name: RemoteInteractive,
+// Thus, simply querying the DeviceLogonEvents for LogonType of RemoteInteractive, does the job.
+// 
+// Finally, filtering for only Remote IP connects from public IP as it's an Attack Surface for Initial Access Vectors via Valid Accounts or Bruteforce.
+// 
+DeviceLogonEvents
+| where LogonType == "RemoteInteractive"
+| where RemoteIPType == "Public"
+| extend RDPLogTime = bin(Timestamp, 1s)
+| extend LocalLogon = tostring(parse_json(AdditionalFields).IsLocalLogon)
+| summarize Count = count() by DeviceName, AccountDomain, AccountName, RemoteIP, LocalLogon, ActionType
+| sort by Count desc
