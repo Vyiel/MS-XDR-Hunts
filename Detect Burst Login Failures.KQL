@@ -1,0 +1,15 @@
+// Detection of multiple login failures in a specific amount of time. 
+// 
+// This is fairly important to hunt for in a corporate environment to understand the login anomalies over time over users and over devices.
+// This is fairly a simple query where I am checking if there are more than 10 login failures in a span of 5 minutes. These metrics can be adjusted based on what's normal to an organization, but other than that, this is the base of it.
+// 
+DeviceLogonEvents
+| where ActionType == "LogonFailed"
+| where Timestamp > ago(30d)
+| summarize FailedCount = count(), 
+            StartTime = min(Timestamp), 
+            EndTime = max(Timestamp), 
+            DurationInSeconds = datetime_diff("second", max(Timestamp), min(Timestamp))
+    by AccountName, DeviceName, bin(Timestamp, 1h)1
+| where FailedCount >= 10 and DurationInSeconds <= 300
+| order by FailedCount desc
