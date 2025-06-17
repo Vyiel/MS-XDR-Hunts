@@ -1,0 +1,15 @@
+// Detection of Bruteforce from user IDs only that exists on MS Entra ID.
+// 
+// EntraID Logs, I.E. SigninLogs provide good amount of telemetry with which one can understand MFA structure in the organization to impossible movement or Bruteforce.
+// Thus, bellow is a fairly simple query to detect multiple login failures which may or may not be indicative of bruteforce based on Result Types:
+// AADSTS50076	UserStrongAuthClientAuthNRequired - Due to a configuration change made by the admin such as a Conditional Access policy, per-user enforcement, or because you moved to a new location, the user must use multifactor authentication to access the resource. Retry with a new authorize request for the resource.
+// AADSTS50074	UserStrongAuthClientAuthNRequiredInterrupt - Strong authentication is required and the user did not pass the MFA challenge.
+// 500121 indicates Authentication failed during strong authentication request. The user didn't complete the MFA prompt or they may have decided not to authenticate or timed out while doing other work, or has an issue with their authentication setup.
+// 
+SigninLogs
+| where ResultType in (50076, 50074, 500121)
+| extend City = tostring(parse_json(LocationDetails).city)
+| where isnotempty(ResourceServicePrincipalId)
+| summarize FailedAttempts = count() by UserPrincipalName, IPAddress, City, bin(TimeGenerated, 1h)
+| where FailedAttempts >= 5
+| sort by FailedAttempts desc
