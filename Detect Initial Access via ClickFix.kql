@@ -1,0 +1,30 @@
+// Detect TTP: ClickFix based Initial Access
+// 
+// Honestly I rarely remember TTP/APT/GROUP names and their doing, as I feel concentrating on the fundamentals more than specific attack patterns is better, but This ClickFix. After I saved one of my clients from one,
+// have been seeing it continuously throughout the last 6 months.
+// 
+// So yes, I will say this, ClickFix, The Step Brother of Lumma, you deserve your own hunting query LOL.
+// 
+// Anyways, one of the known common techniques for ClickFix capture, is to check powershell commands for -encoded, contains http, iwr, iex etc.
+// Although does results in the actual ClickFix, but also results in a million false positives. For this TTP though, we have the luxury to go even more fundamental.
+// 
+// As ClickFix relies on the User manually executing the process, It will go to Powershell via Explorer almost always.
+// We technically can write a query for this, but we can go a bit even deeper. Wherever there is a ClickFix, there's a Clipboard Copy/Paste event as it literally copies the command from the Website. 
+// So assuming the user takes a maximum of 5 seconds to go Win + Run -> Ctrl + V -> Enter, We can scan for ClipBoardCopy events aswell +-5 seconds from powershell event.
+// 
+let PsEvents = 
+    DeviceEvents
+    | extend DevTime = bin(Timestamp, 1s)
+    | where ActionType == "PowerShellCommand"
+    | where InitiatingProcessParentFileName == @"explorer.exe"
+    | where InitiatingProcessFileName == @"powershell.exe"
+    | where InitiatingProcessCommandLine matches regex @"(?i)\bhttp(s)?://"
+    | where InitiatingProcessCommandLine has_any (@"iex", @"iwr", @"-command", @"hidden", @"robot")
+    | project DevTime, DeviceId, PSInitProcParent = InitiatingProcessParentFileName, PSInitProc = InitiatingProcessFileName, PSCLI = InitiatingProcessCommandLine, PSAccountName = InitiatingProcessAccountName;
+// 
+DeviceEvents
+| extend DevTime2 = bin(Timestamp, 1s)
+| where ActionType == "GetClipboardData"
+| join kind=inner PsEvents on DeviceId
+| where abs(datetime_diff('second', DevTime, DevTime2)) <= 5
+| project DevTime, DeviceName, PSAccountName, PSInitProc, PSInitProcParent, PSCLI
