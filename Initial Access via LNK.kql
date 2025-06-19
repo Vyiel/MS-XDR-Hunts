@@ -1,4 +1,5 @@
 // Detection of Execution of LNK files, that might be malicious based on unusual processes and relationships.
+// Note: This query will include non malicious events aswell. That part of the analysis has to be done manually from the results.
 // 
 // LNK Files are shortcuts, made artifically by creating Wscript.Shell Object to CreateShortcut(). 
 // These files are artifically modified to call a malware or a powershell/cmd or any LOLBIN, to directly execute.
