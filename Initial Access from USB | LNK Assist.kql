@@ -1,4 +1,5 @@
 // # Detection of USB file and related events but with help of LNK
+// Note: This query will include non malicious events aswell. That part of the analysis has to be done manually from the results.
 // 
 // One of the well known ways to detect USB, is to scan for UsbDriveMounted action type from DeviceEvents. One more way I can also see activities, is to check what happened + 5 minutes of USB event.
 // But that is tremendously heavy, thus MDE literally denies to execute it.
