@@ -11,15 +11,14 @@ let LolBins = dynamic( [@"powershell.exe", @"cmd.exe", @"wscript.exe", @"mshta.e
 let LNKevents = 
     DeviceEvents
     | extend DevTime = bin(Timestamp, 1s)
-    | where DeviceName contains "thd"
     | where ActionType == "BrowserLaunchedToOpenUrl"
     | where RemoteUrl endswith @".lnk" and RemoteUrl !contains "http"
     | where RemoteUrl has_any (@"desktop", @"downloads", @"public", @"documents")
     | project DevTime, DeviceId, RemoteUrl, devInitProcId = InitiatingProcessId;
 DeviceProcessEvents
-| join kind=inner LNKevents on DeviceId
 | extend DevProcTime = bin(Timestamp, 1s)
+| where FileName has_any (LolBins)
+| join kind=inner hint.shufflekey = DeviceId LNKevents on DeviceId
 | where DevProcTime == DevTime
 | where InitiatingProcessId == devInitProcId
-| where FileName has_any (LolBins)
 | project DevProcTime, DeviceName, AccountName, FileName, ProcessCommandLine, FolderPath, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessParentFileName, RemoteUrl
