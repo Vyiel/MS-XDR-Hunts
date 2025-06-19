@@ -1,0 +1,29 @@
+// # Detection of USB file and related events but with help of LNK
+// 
+// One of the well known ways to detect USB, is to scan for UsbDriveMounted action type from DeviceEvents. One more way I can also see activities, is to check what happened + 5 minutes of USB event.
+// But that is tremendously heavy, thus MDE literally denies to execute it.
+// 
+// So, in this case, I went for an alternate story, where I have seen whenever I connect a USB drive or try to do anything from inside it, an LNK file is generated somewhere or the other
+// Either within the USB drive, OR Windows Recents, and also keeps record of files executed by creating an lnk. 
+// 
+// In this query, I checked for ShellLinkCreateFileEvent with UsOnRemovableMedia to True, and with that time, I checked for USB events +-10 Minutes, giving an overview of the USB Device Itself.
+// The resulting files can tell you about what files might have been accessed over which USB drive.
+// 
+let UsbLnkEvents = 
+    DeviceEvents
+    | extend DevTime = bin(Timestamp, 1s)
+    | where ActionType == "ShellLinkCreateFileEvent"
+    | where tostring(parse_json(AdditionalFields).IsOnRemovableMedia) == "true"
+    | extend IsAdmin = tostring(parse_json(AdditionalFields).ShellLinkRunAsAdmin)
+    | project DevTime, DeviceId, LnkFileName = FileName, LnkFolderPath = FolderPath, IsAdmin;
+DeviceEvents
+| join kind=inner UsbLnkEvents on DeviceId
+| where ActionType == "UsbDriveMounted"
+| extend DevTime2 = bin(Timestamp, 1s)
+| where abs(datetime_diff('minute', DevTime, DevTime2)) <= 10
+| extend ParsedFields = parse_json(AdditionalFields)
+| extend DriveLetter = tostring(ParsedFields.DriveLetter)
+| extend ProductName = tostring(ParsedFields.ProductName)
+| extend ProductManufacturer = tostring(ParsedFields.Manufacturer)
+| where isnotempty(DriveLetter)
+| project DevTime, DeviceName, LnkFileName, LnkFolderPath, IsAdmin, AccountName, DriveLetter, ProductName, ProductManufacturer
