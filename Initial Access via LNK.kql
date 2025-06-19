@@ -18,7 +18,7 @@ let LNKevents =
 DeviceProcessEvents
 | extend DevProcTime = bin(Timestamp, 1s)
 | where FileName has_any (LolBins)
-| join kind=inner hint.shufflekey = DeviceId LNKevents on DeviceId
+| join kind = inner hint.shufflekey = DeviceId LNKevents on DeviceId
 | where DevProcTime == DevTime
 | where InitiatingProcessId == devInitProcId
 | project DevProcTime, DeviceName, AccountName, FileName, ProcessCommandLine, FolderPath, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessParentFileName, RemoteUrl
