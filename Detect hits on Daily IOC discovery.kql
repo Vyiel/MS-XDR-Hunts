@@ -1,0 +1,29 @@
+// Detection of static hits on IOCs generated daily on ThreatFox and MalwareBazaar
+// 
+// MalwareBazaar and ThreatFox, One primarly for Hashes and another for URLs and Domains from Abuse.ch, daily updates new submissions and findings for IOCs.
+// They publish a Recent Segment that covers the top recent 100 or more IOCs.
+// 
+// KQL have an almost API like function called externaldata(), that can pull JSON, CSV or TEXT among others from external sources.
+// In this query, I have imported these hashes and urls to KQL and is running hunts environment wide, which as a custom detection rule can make SIA's Job for Daily IOC feeds and Vets a lot easier.
+// 
+let RecentAbuseHashes = 
+    externaldata(Sha256:string, file_name:string)
+    [
+    @"https://bazaar.abuse.ch/export/txt/sha256/recent/"
+    ]
+    with(format="txt")
+    | where Sha256 !contains "#"
+    | summarize make_list(Sha256);
+    // 
+let RecentThreatFoxUrls = 
+    externaldata(content: string)
+    [
+    @"https://threatfox.abuse.ch/export/csv/urls/recent/"
+    ]
+    with(format="txt")
+    | extend URLs = split(content, ",")[2]
+    | where isnotempty(URLs) and URLs contains "http"
+    | summarize make_list(URLs);
+// 
+union DeviceNetworkEvents, DeviceFileEvents
+| where SHA256 has_any (RecentAbuseHashes) or RemoteIP has_any (RecentThreatFoxUrls)
