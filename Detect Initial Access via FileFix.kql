@@ -1,0 +1,29 @@
+// Detect FileFix based initial access, a sister TTP of ClickFix
+// 
+// Instead of copy pasting the powershell command to the Run Dialogue box, the user is tricked to open a "Upload File" dialogue box, where the explorer path is manipulated to execute the auto copied command.
+// As Explorer has the ability to run cmd/powershell and anything that's in the PATH variable, the same operations can be executed as well.
+// 
+// The phishing strategy here is more convincing, more relatable, which is why possibly more success in Initial Access.
+// 
+// Observation: One great thing about FileFix, is that the commands will be executed with their ParentProcessID of Edge or Chrome or other browsers, which makes it easier to write a hunt/detection rule against.
+// 
+let BrowserList = dynamic(["msedge.exe", "chrome.exe", "firefox.exe", "brave.exe"]);
+let MonitoredProcesses = dynamic ( ["cmd.exe", "powershell.exe", "powershell_ise.exe", "wscript.exe", "cscript.exe",
+    "mshta.exe", "certutil.exe", "bitsadmin.exe", "regsvr32.exe", "rundll32.exe", "wmic.exe", "msbuild.exe", "ftp.exe",
+    "curl.exe", "wget.exe", "python.exe", "java.exe", "javaw.exe", "csc.exe", "msiexec.exe"]);
+let DevProcEvents = 
+    DeviceProcessEvents
+    | extend DevProcTime = bin(Timestamp, 1s)
+    | where FileName has_any (MonitoredProcesses)
+    | where InitiatingProcessFileName has_any (BrowserList)
+    | project DevProcTime, DeviceId, DeviceName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessParentFileName, AccountUpn, 
+    ParentBrowserPID = InitiatingProcessParentId;
+// 
+DeviceEvents
+| extend DevTime = bin(Timestamp, 1s)
+| where ActionType == "GetClipboardData"
+| join kind=inner DevProcEvents on DeviceId
+| where abs(datetime_diff('second', DevTime, DevProcTime)) <= 10
+| where InitiatingProcessParentId == ParentBrowserPID
+| project DevProcTime, DeviceId, DeviceName, FileName1, ProcessCommandLine1, InitiatingProcessFileName1, InitiatingProcessCommandLine1, InitiatingProcessParentFileName1, AccountUpn, 
+ParentBrowserPID
