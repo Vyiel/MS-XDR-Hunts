@@ -1,0 +1,17 @@
+// Detect all available Remote Management Software.
+// 
+// Fairly simple solution for this. Checking via hash is just stupid, and same goes for file name, but from DeviceTvmSoftwareInventory, or even from DeviceProcessEvents,
+// If we go for software names or internal filenames, which are embedded within a PE, there are very less chances to go offtrack.
+// 
+// The RMM list is taken from GitHub as you can see from the external URL.
+// 
+let RMMGitCSV =
+    externaldata (Software: string, )
+    [
+    @"https://raw.githubusercontent.com/0x706972686f/RMM-Catalogue/refs/heads/main/rmm.csv"
+    ]
+    with(format="csv", ignoreFirstRecord="True")
+    | summarize make_list(tolower(Software));
+//
+union DeviceTvmSoftwareInventory, DeviceProcessEvents
+| where tolower(SoftwareName) has_any (RMMGitCSV) or tolower(ProcessVersionInfoProductName) has_any (RMMGitCSV) or tolower(ProcessVersionInfoInternalFileName) has_any (RMMGitCSV)
