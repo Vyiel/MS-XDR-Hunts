@@ -1,0 +1,45 @@
+// Detecting Suspicious processes running from World Writable Directories.
+// 
+// This list of directories are taken from https://gist.github.com/mattifestation/5f9de750470c9e0e1f9c9c33f0ec3e561
+// A fine list, and World Writable Directories mean, that anyone can write files to these directories legit or illegit, and execute them if they are executables.
+// 
+// This is that's why the place, most victimized by hackers for obvious reasons.
+// In this query I am targetting processes from DeviceProcessEvents where the processes doesn't have a company name which is a must for legitimate processes,
+// and for those who are not signed.
+// This narrows down much of the search results. No doubt you will found thousands of _is*** files and msiexec processes, which you have to manually check and exclude.
+// I have summerized by hash only so that it can be VTed later on, but you can do anything you like
+// but the rest can be figured out with this query.
+// 
+let WorldWritableDirs = dynamic([
+@"c:\windows\system32\microsoft\crypto\rsa\machinekeys",
+@"c:\windows\system32\tasks_migrated\microsoft\windows\pla\system",
+@"c:\windows\syswow64\tasks\microsoft\windows\pla\system",
+@"c:\windows\debug\wia",
+@"c:\windows\system32\tasks",
+@"c:\windows\syswow64\tasks",
+@"c:\windows\tasks",
+@"c:\windows\registration\crmlog",
+@"c:\windows\system32\com\dmp",
+@"c:\windows\system32\fxstmp",
+@"c:\windows\system32\spool\drivers\color",
+@"c:\windows\system32\spool\printers",
+@"c:\windows\system32\spool\servers",
+@"c:\windows\syswow64\com\dmp",
+@"c:\windows\syswow64\fxstmp",
+@"c:\windows\temp",
+@"c:\windows\tracing",
+@"C:\Users\Public\",
+@"C:\AppData\Local\Temp"]
+);
+// 
+let RawProcesses = 
+    DeviceProcessEvents
+    | where FolderPath has_any (WorldWritableDirs)
+    | where isempty(ProcessVersionInfoCompanyName)
+    | join kind=leftouter ( DeviceFileCertificateInfo | project-rename CertSHA1 = SHA1 ) on $left.SHA1 == $right.CertSHA1, DeviceId
+    | where IsSigned != 1 and isnotempty(SHA1)
+    | project FileName, FolderPath, InitiatingProcessFileName, SHA1;
+// 
+RawProcesses
+    | summarize Count = count() by SHA1
+    | sort by Count desc
