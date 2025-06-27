@@ -1,0 +1,30 @@
+// Detecion of malicious emails received, that were delivered, and was allowed to click URLs inside of the email.
+// 
+// In this query, we first took some of the domains that are known whitelisted, or based on environment, we can fill.
+// Secondly, we figure out filterable telemetries from EmailEvents, such as DMARK, Phishing/Spam confidence, Create buckets for complaint levels.
+// We then set the parmeters to only filter emails that came inbound, with a complaint level above 3, where it was delivered and finally where Phishing confidence is high.
+// 
+// We then join with URL Click events with NetworkMessageID and see which URLs there were, if they were click allowed, and if they were actually clicked through. 
+// As you can see some of these telemetries are commented out, but they can be enabled or disabled based on actual data.
+//
+let excludedDomains = dynamic(["google.com", "and more.com"]);
+EmailEvents
+    | extend MailTime = bin(Timestamp, 1s)
+    | where EmailDirection == "Inbound"
+    | where SenderFromDomain !in~ (excludedDomains)
+    | extend DMARC = tostring(parse_json(AuthenticationDetails).DMARC)
+    | extend PhishingConfidence = coalesce(tostring(parse_json(ConfidenceLevel).Phish), "None")
+    | extend SpamConfidence = coalesce(tostring(parse_json(ConfidenceLevel).Spam), "None")
+    // | where BulkComplaintLevel > 3
+    | extend ComplaintLevels = case(BulkComplaintLevel <= 3, "Low", 
+                        BulkComplaintLevel <= 7, "Medium", 
+                        BulkComplaintLevel <= 9, "High",
+                        "")
+    // 
+    | where DeliveryAction == "Delivered"
+    | where PhishingConfidence !in ("Normal", "None")
+    // | where ComplaintLevels !in ("Low")
+    // | where DMARC == "fail"
+    | join kind=inner UrlClickEvents on NetworkMessageId
+    | project SenderFromAddress, SenderMailFromAddress, RecipientEmailAddress, Subject, EmailDirection, ActionType, Clicked = IsClickedThrough, UrlChain, AccountUpn, 
+    ConfidenceLevel, PhishingConfidence, SpamConfidence, ThreatTypes, DeliveryAction, DeliveryLocation, EmailAction, EmailActionPolicy, AttachmentCount, UrlCount;
