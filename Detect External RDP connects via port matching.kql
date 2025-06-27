@@ -1,0 +1,12 @@
+// Detect RDP connect attempts statically.
+// 
+// I have already written a better query for RDP that's more fundamental with RemoteInteractive events, but this query captures more kinds of telemetry from failed, successful, attempts that are outside of RemoteInteractive events.
+// With the join with DeviceLogonEvents, the data is more catered to Login based telemetries, but removing that will display anything from port scanning to banner grabbing.
+// 
+DeviceNetworkEvents
+| where LocalPort == 3389
+| where RemoteIPType == "Public"
+| extend DevNetTime = bin(Timestamp, 1day)
+| join kind=inner ( DeviceLogonEvents | extend DevLogTime = bin(Timestamp, 1day) ) on DeviceId, $left.DevNetTime == $right.DevLogTime
+| where RemoteIP == RemoteIP1
+| summarize by DeviceName, AccountName, RemoteIP, LogonStatus = ActionType, ConnectionStatus = ActionType1
