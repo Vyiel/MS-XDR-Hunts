@@ -8,9 +8,6 @@
 // 
 let DevEvents = 
 DeviceEvents
-| where DeviceName contains "thd"
-| extend LocTime = datetime_utc_to_local(Timestamp, 'Asia/Kolkata')
-| where LocTime between (datetime(2025-07-09 17:31:00) .. datetime(2025-07-09 17:32:00))
 | extend DevTime = bin(Timestamp, 1s)
 | where ActionType =~ @"ServiceInstalled"
 | where tolower(FileName) contains @"psexesvc"
