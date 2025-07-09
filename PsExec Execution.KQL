@@ -1,0 +1,25 @@
+// Detect official version of PSEXEC process execution based Lateral Movement.
+// 
+// PsExec is still one of the first choices for Lateral Movement and there are a 100 versions of it.
+// Detections for other versions will be out soon eitherway, but this is the one based on DeviceEvents and DeviceProcessEvents.
+// 
+// Please note, I have gone a bit more fundamental with the DeviceEvents table, but even without joining with it, the query would work. Then again, anyone could run an exe file called PsExec.exe.
+// Thus, DeviceEvents verifies it with the service installation.
+// 
+let DevEvents = 
+DeviceEvents
+| where DeviceName contains "thd"
+| extend LocTime = datetime_utc_to_local(Timestamp, 'Asia/Kolkata')
+| where LocTime between (datetime(2025-07-09 17:31:00) .. datetime(2025-07-09 17:32:00))
+| extend DevTime = bin(Timestamp, 1s)
+| where ActionType =~ @"ServiceInstalled"
+| where tolower(FileName) contains @"psexesvc"
+| project DevTime, DeviceId;
+// 
+DeviceProcessEvents
+| extend ProcTime = bin(Timestamp, 1s)
+| where tolower(InitiatingProcessFileName) contains @"psexesvc"
+| where tolower(InitiatingProcessParentFileName) == "services.exe"
+| join kind=inner ( DevEvents ) on DeviceId
+| where abs(datetime_diff('second', DevTime, ProcTime)) <= 3
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessParentFileName
