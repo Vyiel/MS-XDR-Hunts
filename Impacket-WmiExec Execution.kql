@@ -1,0 +1,18 @@
+// Detect possible lateral movement via Impacket's WmiExec
+// 
+// Unline PsExec, it uses it doesn't install a service but executes using WMI service that comes with Windows.
+// Assuming that someone needs feedback from commands, in that case it's done with files shared with network shares, also CMD feedbacks are recorded via STDOUT.
+// 
+// Fortunately, DeviceEvents directly record WMI events as ProcessCreatedUsingWmiQuery. So I didn't decide to go with DeviceProcessEvents as using this is providing good results itself.
+// impacket's WmiExec provides the choice for CMD or Powershell prompts, thus taking both into consideration.
+// 
+DeviceEvents
+| where ActionType == "ProcessCreatedUsingWmiQuery"
+| where InitiatingProcessFileName == "svchost.exe"
+| where FileName has_any (@"cmd", @"powershell")
+| where ProcessCommandLine contains "2>&1"
+| summarize DetectionCount = count(), 
+            FirstTimeDetected = min(Timestamp), 
+            LastTimeDetected = max(Timestamp) 
+  by DeviceName, FileName, AccountName, AccountDomain
+| order by FirstTimeDetected desc 
