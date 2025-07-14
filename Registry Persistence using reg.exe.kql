@@ -1,0 +1,10 @@
+// Detect execution of reg.exe to plant executables to run with Windows in both user and machine scope
+// 
+// This is a pretty common technique for persistence and fortunately, MDE has a seperate table for that called DeviceRegistryEvents which helps to understand registry value sets with ease.
+// In this query, I am just searching for the two paths for values, and just providing the important fields.
+// 
+DeviceRegistryEvents
+| where ActionType =~ "RegistryValueSet"
+| where RegistryKey startswith @"HKEY_CURRENT_USER" and RegistryKey endswith @"CurrentVersion\Run"
+or RegistryKey startswith @"HKEY_LOCAL_MACHINE" and RegistryKey endswith @"CurrentVersion\Run"
+| project Timestamp, DeviceName, RegistryKey, RegistryValueName, RegistryValueData, InitiatingProcessParentFileName, InitiatingProcessCommandLine
