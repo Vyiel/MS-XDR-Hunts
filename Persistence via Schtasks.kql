@@ -1,0 +1,17 @@
+// Detect first installation of Scheduled Tasks based persistence
+// 
+// This is another obvious and frequently used persistence mechanisms and easy to execute.
+// Officially it would be somewhat a hard task to see from DeviceProcessEvents, but fortunately, we have DeviceEvents which actions on Scheduled Task Creation by default.
+// 
+// As this would be the most fundamental detection, I went with DeviceEvents but compromised on data enrichment. 
+// 
+// Please note, this query can be paired with DeviceProcessEvents to get more contextualization.
+// 
+DeviceEvents
+| where ActionType =~ "ScheduledTaskCreated"
+| extend TaskName = trim(@"\\", tostring(parse_json(AdditionalFields).TaskName))
+| extend TaskAction = tostring(parse_json(AdditionalFields).TaskContent)
+| extend Payload = extractjson('$.Actions.Exec.Command', TaskAction)
+| extend Repetition = extractjson('$.Triggers.TimeTrigger.Repetition.Interval', TaskAction)
+| where TaskName !contains @"microsoft" and TaskName !contains @"office" and TaskName !contains "onedrive"
+| project Timestamp, DeviceName, InitiatingProcessAccountName, TaskName, Payload, Repetition
