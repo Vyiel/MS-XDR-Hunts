@@ -5,13 +5,24 @@
 // 
 // As this would be the most fundamental detection, I went with DeviceEvents but compromised on data enrichment. 
 // 
-// Please note, this query can be paired with DeviceProcessEvents to get more contextualization.
+// Please note, this query can be paired with DeviceFileEvents and DeviceProcessEvents to get more contextualization on the files and Relationshiops
 // 
+// EDIT: I added the DeviceProcessEvents contextualization. Looks better, less efficient on resources although, but more clear on reports.
+//
+let DevEvents = 
 DeviceEvents
+| extend DevTime = bin(Timestamp, 1s)
 | where ActionType =~ "ScheduledTaskCreated"
 | extend TaskName = trim(@"\\", tostring(parse_json(AdditionalFields).TaskName))
 | extend TaskAction = tostring(parse_json(AdditionalFields).TaskContent)
 | extend Payload = extractjson('$.Actions.Exec.Command', TaskAction)
 | extend Repetition = extractjson('$.Triggers.TimeTrigger.Repetition.Interval', TaskAction)
 | where TaskName !contains @"microsoft" and TaskName !contains @"office" and TaskName !contains "onedrive"
-| project Timestamp, DeviceName, InitiatingProcessAccountName, TaskName, Payload, Repetition
+| project DevTime, DeviceId, InitiatingProcessAccountName, TaskName, Payload, Repetition;
+// 
+DeviceProcessEvents
+| extend DevProcTime = bin(Timestamp, 1s)
+| where FileName == "schtasks.exe"
+| join kind=inner ( DevEvents ) on DeviceId
+| where DevProcTime == DevTime
+| project DevProcTime, DeviceName, InitiatingProcessAccountName, FileName, ProcessCommandLine, TaskName, Payload, Repetition, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessParentFileName
