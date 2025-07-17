@@ -1,0 +1,19 @@
+// Detect Device Logins that hasn't logged on in the last 30 days
+// 
+// This one is pretty simple here. I am taking two instances where we have last 29 day logins and today/last day's logins
+// Later we join those tables such that it will only show logins only that doesn't appear in the last 30 days.
+// 
+// Note: This is Per Account Login Per Device. This makes it more relevant in corporate environments.
+// 
+let 1DLogins = 
+DeviceLogonEvents
+| where Timestamp >= ago(1d)
+| summarize by AccountName, DeviceName;
+// 
+let 30DLogins = 
+DeviceLogonEvents
+| where Timestamp >= ago(30d) and Timestamp < ago(1d)
+| summarize by AccountName, DeviceName;
+// 
+1DLogins 
+| join kind=anti ( 30DLogins ) on AccountName, DeviceName
