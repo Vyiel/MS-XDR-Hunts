@@ -1,0 +1,14 @@
+// Hunt for Vulnerable Drivers in the organization
+// 
+// This is pretty self explanatory. I have compiled a list of SHA256 hashes from loldrivers.io and just hunting in the FileEvents and DeviceEvents table
+// 
+let VulnDriversCSV =
+    externaldata (Sha256: string, Name: string)
+    [
+    @"https://gist.githubusercontent.com/Vyiel/daadaf1d0b2fc18ba183b2dbbb1be82b/raw/a629bf3c02e8431d73fdc415cdb5b08cc100348c/LolDriversBYOVD.csv"
+    ]
+    with(format="csv", ignoreFirstRecord="True")
+    | where isnotempty(Sha256)
+    | summarize make_list(tolower(Sha256));
+union DeviceEvents, DeviceFileCertificateInfo
+| where tolower(SHA256) has_any (VulnDriversCSV)
