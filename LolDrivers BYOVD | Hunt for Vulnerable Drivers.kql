@@ -1,14 +1,20 @@
 // Hunt for Vulnerable Drivers in the organization
 // 
-// This is pretty self explanatory. I have compiled a list of SHA256 hashes from loldrivers.io and just hunting in the FileEvents and DeviceEvents table
+// When a malicious driver is loaded, we have a fundamental log on DeviceEvents called "DriverLoad".
+// In this query, we are taking in all such driver hashes from loldrivers, and checking on each DriverLoads for a hash match.
 // 
-let VulnDriversCSV =
-    externaldata (Sha256: string, Name: string)
+let VulnDrivers = 
+externaldata (KnownVulnerableSamples:dynamic) 
     [
-    @"https://gist.githubusercontent.com/Vyiel/daadaf1d0b2fc18ba183b2dbbb1be82b/raw/a629bf3c02e8431d73fdc415cdb5b08cc100348c/LolDriversBYOVD.csv"
+    h@"https://www.loldrivers.io/api/drivers.json"
     ]
-    with(format="csv", ignoreFirstRecord="True")
-    | where isnotempty(Sha256)
-    | summarize make_list(tolower(Sha256));
-union DeviceEvents, DeviceFileCertificateInfo
-| where tolower(SHA256) has_any (VulnDriversCSV)
+    with (format=multijson)
+| mv-expand KnownVulnerableSamples
+| extend FileName = parse_json(KnownVulnerableSamples).Filename
+| extend SHA1 = tostring(parse_json(KnownVulnerableSamples).SHA1)
+| extend SHA256 = tostring(parse_json(KnownVulnerableSamples).SHA256)
+| project FileName, SHA1, SHA256;
+//  
+DeviceEvents
+| where ActionType =~ "DriverLoad"
+| join kind=inner ( VulnDrivers ) on SHA1, SHA256
