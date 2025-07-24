@@ -1,0 +1,15 @@
+// Detect sysmon driver abuse to bypass EDR.
+// 
+// Honestly a technique that impressed a semi tech guy like me.
+// When sysmon is installed, a driver is also installed that acts as a minifilter driver to have visibility over system events.
+// But just like SysMon, EDRs also implement their own filter drivers for the same purpose.
+// All of these have an altitide value that acts as a priority value in the list.
+// If Sysmon's Altitude value could be changed to that of an EDR, they don't seem to work anymore, thus successfully blinding EDR. Atleast on the filter side.
+// 
+// Here's the direct detection rule just for that. 385201 is the default altitude value for Sysmon and if there's a reg set event with another number, we shall get a detection.
+// 
+DeviceRegistryEvents
+| where ActionType =~ "RegistryValueSet"
+| where RegistryKey contains @"HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SysmonDrv\Instances\Sysmon Instance"
+| where RegistryValueName contains "Altitude"
+| where PreviousRegistryValueData != 385201
