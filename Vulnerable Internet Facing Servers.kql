@@ -1,0 +1,22 @@
+Detect vulnerable servers that are internet exposed and have a CVE criticality of Medium, High and Critical.
+
+Fortunately I could go completely fundamental with this one as now isInternetFacing is a default column provided by MS, thus no need to gather that info with tricks.
+Also, CVE along with it's information is also provided by default.
+
+Thus, all I had to do is join them together to get the data.
+
+Query:
+let internetfacing = DeviceNetworkEvents
+| where Timestamp >= ago(3d)
+| where DeviceName !contains "-"
+| where ActionType in ("ConnectionAcknowledged", "InboundConnectionAccepted")
+| where RemoteIPType contains "public"
+| summarize make_list(DeviceId) by DeviceId;
+//
+DeviceTvmSoftwareVulnerabilities
+| join DeviceTvmSoftwareVulnerabilitiesKB on CveId
+| where DeviceId in (internetfacing)
+| where OSPlatform contains "server"
+| where VulnerabilitySeverityLevel !contains "low"
+| where IsExploitAvailable == 1
+| summarize by DeviceName, OSPlatform, SoftwareVendor, CveId, VulnerabilitySeverityLevel, RecommendedSecurityUpdate,VulnerabilityDescription
