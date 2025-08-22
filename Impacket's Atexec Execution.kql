@@ -1,0 +1,29 @@
+// Detect execution of Impacket's Atexec execution (Doesn't reveal Source IP - Additional hunting/timeline to be checked)
+// 
+// Atexec was impressive to me. I didn't see something like that before, only to realize how half baked my knowledge really is.
+// Apparently, it's possible to use RPC and named pipes to create a scheduled task in another accepting device and just like any other persistence task, a cmd can be executed with arguments, 
+// where the result can be stored into a tmp file in a share and sent back to the requesting client.
+// 
+// As impressive it is to detect, I went for a simpler strategy of Atexec where as soon the task is created, the payload/argument run, it goes back to deletion of the task, where the task name
+// is an alphanumerically named jargon.
+// 
+// My query detects the quick creation and deletion of the same task where the commandline has piped output that saves itself into the temp directory.
+// 
+// Query:
+// 
+let TaskCreated = 
+DeviceEvents
+| extend DevTime1 = bin(Timestamp, 1s)
+| where ActionType =~ "ScheduledTaskCreated"
+| extend TaskNameCr = tostring(parse_json(AdditionalFields).TaskName)
+| extend Args = extractjson('$.Actions.Exec.Arguments', tostring(parse_json(AdditionalFields).TaskContent))
+| where Args contains "temp" and Args contains "2>&1"
+| project DevTime1, DeviceId, DeviceName, TaskNameCr, ActionType, InitiatingProcessAccountName, Args;
+// 
+DeviceEvents
+| where ActionType =~ "ScheduledTaskDeleted"
+| extend DevTime2 = bin(Timestamp, 1s)
+| join kind=inner hint.shufflekey=DeviceId ( TaskCreated ) on DeviceId
+| where abs(datetime_diff('second', DevTime1, DevTime2)) <= 3
+| extend TaskNameDl = tostring(parse_json(AdditionalFields).TaskName)
+| project Timestamp, DeviceName, TaskNameCr, InitiatingProcessAccountName, Args
