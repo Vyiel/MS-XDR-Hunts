@@ -1,0 +1,3702 @@
+{
+    "AlertInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "AlertId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Title",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Category",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Severity",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ServiceSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DetectionSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AttackTechniques",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SentinelWorkspaceIds",
+            "Type": "string"
+        }
+    ],
+    "AlertEvidence": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "AlertId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Title",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Categories",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AttackTechniques",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ServiceSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DetectionSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EntityType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EvidenceRole",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EvidenceDirection",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "ThreatFamily",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteUrl",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LocalIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "NetworkMessageId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EmailSubject",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Application",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ApplicationId",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "OAuthApplicationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryKey",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueData",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Severity",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CloudResource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CloudPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceID",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SubscriptionId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SentinelWorkspaceIds",
+            "Type": "string"
+        }
+    ],
+    "DeviceNetworkInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "NetworkAdapterName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MacAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "NetworkAdapterType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "NetworkAdapterStatus",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TunnelType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConnectedNetworks",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DnsAddresses",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPv4Dhcp",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPv6Dhcp",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DefaultGateways",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPAddresses",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "NetworkAdapterVendor",
+            "Type": "string"
+        }
+    ],
+    "DeviceInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ClientVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PublicIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSArchitecture",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSBuild",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsAzureADJoined",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "JoinType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AadDeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LoggedOnUsers",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryDeviceTag",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MachineGroup",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "OnboardingStatus",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceCategory",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceSubtype",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Model",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Vendor",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSDistribution",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSVersionInfo",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MergedDeviceIds",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MergedToDeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsInternetFacing",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "SensorHealthState",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsExcluded",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ExclusionReason",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ExposureLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AssetValue",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceManualTags",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceDynamicTags",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "HardwareUuid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CloudPlatforms",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AzureVmId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AzureResourceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AzureVmSubscriptionId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "GcpFullResourceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AwsResourceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsTransient",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "OsBuildRevision",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "HostDeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MitigationStatus",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConnectivityType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DiscoverySources",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FirmwareVersions",
+            "Type": "string"
+        }
+    ],
+    "DeviceNetworkEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemotePort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "RemoteUrl",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LocalIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LocalPort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "Protocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LocalIPType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteIPType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DeviceProcessEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "ProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "ProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessLogonId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessSignerType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSignatureStatus",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CreatedProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessUniqueId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DeviceFileEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileOriginUrl",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileOriginReferrerUrl",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileOriginIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PreviousFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PreviousFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "RequestProtocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestSourceIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestSourcePort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "RequestAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ShareName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SensitivityLabel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SensitivitySubLabel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsAzureInfoProtectionApplied",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DeviceRegistryEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryKey",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueData",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PreviousRegistryKey",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PreviousRegistryValueName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PreviousRegistryValueData",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DeviceLogonEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Protocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FailureReason",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsLocalAdmin",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "LogonId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "RemoteDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteIPType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemotePort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DeviceFileCertificateInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsSigned",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "SignatureType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Signer",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SignerHash",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Issuer",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IssuerHash",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CertificateSerialNumber",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CrlDistributionPointUrls",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CertificateCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "CertificateExpirationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "CertificateCountersignatureTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "IsTrusted",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "IsRootSignerMicrosoft",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        }
+    ],
+    "DeviceImageLoadEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessIntegrityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DisruptionAndResponseEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceDeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetDeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DomainName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceDomainName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetDomainName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceUserSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceUserName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceUserDomainName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourceIpAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SourcePort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "IpAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Port",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "AuthenticationProtocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Service",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InterfaceUuid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InterfaceFriendlyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ShareName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "SessionId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CompromisedAccountCount",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "PolicyId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PolicyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PolicyVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "PolicyHash",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DataSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsPolicyOn",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        }
+    ],
+    "DeviceEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "MD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteUrl",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "ProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ProcessTokenElevation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "RegistryKey",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryValueData",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemoteIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RemotePort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "LocalIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LocalPort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "FileOriginUrl",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileOriginIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA1",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessMD5",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessFileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessFolderPath",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessCommandLine",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessAccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoCompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoProductVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoInternalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoOriginalFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessVersionInfoFileDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentFileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessParentCreationTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "InitiatingProcessLogonId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "AppGuardContainerId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsInitiatingProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CreatedProcessSessionId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsProcessRemoteSession",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ProcessRemoteSessionDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ProcessRemoteSessionIP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InitiatingProcessUniqueId",
+            "Type": "string"
+        }
+    ],
+    "DeviceTvmSoftwareEvidenceBeta": [
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareVendor",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RegistryPaths",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "DiskPaths",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "LastSeenTime",
+            "Type": "string"
+        }
+    ],
+    "DeviceTvmInfoGathering": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "LastSeenTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "dynamic"
+        }
+    ],
+    "DeviceTvmSecureConfigurationAssessment": [
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ConfigurationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationCategory",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationSubcategory",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationImpact",
+            "Type": "real"
+        },
+        {
+            "Column Name ": "IsCompliant",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "IsApplicable",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "Context",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "IsExpectedUserImpact",
+            "Type": "bool"
+        }
+    ],
+    "DeviceTvmInfoGatheringKB": [
+        {
+            "Column Name ": "IgId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FieldName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Description",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Categories",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "DataStructure",
+            "Type": "string"
+        }
+    ],
+    "DeviceTvmSecureConfigurationAssessmentKB": [
+        {
+            "Column Name ": "ConfigurationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationImpact",
+            "Type": "real"
+        },
+        {
+            "Column Name ": "ConfigurationName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RiskDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationCategory",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationSubcategory",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfigurationBenchmarks",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "Tags",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "RemediationOptions",
+            "Type": "string"
+        }
+    ],
+    "DeviceTvmSoftwareVulnerabilitiesKB": [
+        {
+            "Column Name ": "CveId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CvssScore",
+            "Type": "real"
+        },
+        {
+            "Column Name ": "CvssVector",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CveSupportability",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsExploitAvailable",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "VulnerabilitySeverityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LastModifiedTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "PublishedDate",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "VulnerabilityDescription",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AffectedSoftware",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "EpssScore",
+            "Type": "real"
+        }
+    ],
+    "DeviceTvmSoftwareVulnerabilities": [
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSArchitecture",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareVendor",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CveId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "VulnerabilitySeverityLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecommendedSecurityUpdate",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecommendedSecurityUpdateId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CveTags",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "CveMitigationStatus",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AadDeviceId",
+            "Type": "string"
+        }
+    ],
+    "DeviceTvmSoftwareInventory": [
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSArchitecture",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareVendor",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SoftwareVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EndOfSupportStatus",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EndOfSupportDate",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ProductCodeCpe",
+            "Type": "string"
+        }
+    ],
+    "IdentityDirectoryEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Application",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetAccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationIPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationPort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "Protocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Port",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "Location",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ISP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "dynamic"
+        }
+    ],
+    "IdentityQueryEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Application",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "QueryType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "QueryTarget",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Query",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Protocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Port",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "DestinationDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationIPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationPort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "TargetDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetAccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetAccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Location",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "dynamic"
+        }
+    ],
+    "GraphAPIAuditEvents": [
+        {
+            "Column Name ": "IdentityProvider",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ApiVersion",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ApplicationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ClientRequestId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OperationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Location",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestDuration",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestMethod",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ResponseStatusCode",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Scopes",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EntityType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestUri",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UniqueTokenIdentifier",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IpAddress",
+            "Type": "string"
+        }
+    ],
+    "IdentityLogonEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Application",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Protocol",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FailureReason",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Port",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "DestinationDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationIPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DestinationPort",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "TargetDeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TargetAccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Location",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ISP",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "UncommonForUser",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "LastSeenForUser",
+            "Type": "dynamic"
+        }
+    ],
+    "IdentityInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OnPremSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OnPremObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CriticalityLevel",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "Type",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DistinguishedName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CloudSid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "GivenName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Surname",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Department",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "JobTitle",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EmailAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SipProxyAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Address",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "City",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Country",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsAccountEnabled",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "Manager",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Phone",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CreatedDateTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "SourceProvider",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ChangeSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "BlastRadius",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "CompanyName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeletedDateTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "EmployeeId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OtherMailAddresses",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "RiskLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RiskLevelDetails",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "State",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Tags",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "UserAccountControl",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "AssignedRoles",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "PrivilegedEntraPimRoles",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "GroupMembership",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "SourceProviders",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "IdentityEnvironment",
+            "Type": "string"
+        }
+    ],
+    "EmailAttachmentInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "NetworkMessageId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderFromAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecipientEmailAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecipientObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SHA256",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "ThreatTypes",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ThreatNames",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DetectionMethods",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "FileExtension",
+            "Type": "string"
+        }
+    ],
+    "EmailUrlInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "NetworkMessageId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Url",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UrlDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UrlLocation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UrlChainId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UrlChainPosition",
+            "Type": "int"
+        }
+    ],
+    "EmailEvents": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "NetworkMessageId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "InternetMessageId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderMailFromAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderFromAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderMailFromDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderFromDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderIPv4",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SenderIPv6",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecipientEmailAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecipientObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Subject",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EmailClusterId",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "EmailDirection",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeliveryAction",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeliveryLocation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ThreatTypes",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ThreatNames",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DetectionMethods",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConfidenceLevel",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "BulkComplaintLevel",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "EmailAction",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EmailActionPolicy",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EmailActionPolicyGuid",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AuthenticationDetails",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AttachmentCount",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "UrlCount",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "EmailLanguage",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Connectors",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OrgLevelAction",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OrgLevelPolicy",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UserLevelAction",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "UserLevelPolicy",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ExchangeTransportRule",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DistributionList",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ForwardingInformation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Context",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "To",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "Cc",
+            "Type": "dynamic"
+        },
+        {
+            "Column Name ": "ThreatClassification",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RecipientDomain",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EmailSize",
+            "Type": "long"
+        },
+        {
+            "Column Name ": "IsFirstContact",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "LatestDeliveryLocation",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LatestDeliveryAction",
+            "Type": "string"
+        }
+    ],
+    "BehaviorInfo": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "BehaviorId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ActionType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Description",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Categories",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AttackTechniques",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ServiceSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DetectionSource",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DataSources",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "StartTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "EndTime",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "AdditionalFields",
+            "Type": "string"
+        }
+    ],
+    "AADSpnSignInEventsBeta": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "Application",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ApplicationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsManagedIdentity",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "ErrorCode",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "CorrelationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ServicePrincipalName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ServicePrincipalId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceTenantId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Country",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "State",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "City",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Latitude",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Longitude",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        }
+    ],
+    "AADSignInEventsBeta": [
+        {
+            "Column Name ": "Timestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "Application",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ApplicationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LogonType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "EndpointCall",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ErrorCode",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "CorrelationId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "SessionId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountObjectId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AccountUpn",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsExternalUser",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "IsGuestUser",
+            "Type": "bool"
+        },
+        {
+            "Column Name ": "AlternateSignInName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "LastPasswordChangeTimestamp",
+            "Type": "datetime"
+        },
+        {
+            "Column Name ": "ResourceDisplayName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ResourceTenantId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceName",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AadDeviceId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "OSPlatform",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "DeviceTrustType",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "IsManaged",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "IsCompliant",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "AuthenticationProcessingDetails",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "AuthenticationRequirement",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "TokenIssuerType",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "RiskLevelAggregated",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "RiskLevelDuringSignIn",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "RiskEventTypes",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RiskState",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "UserAgent",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ClientAppUsed",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Browser",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConditionalAccessPolicies",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ConditionalAccessStatus",
+            "Type": "int"
+        },
+        {
+            "Column Name ": "IPAddress",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Country",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "State",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "City",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Latitude",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "Longitude",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "NetworkLocationDetails",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "RequestId",
+            "Type": "string"
+        },
+        {
+            "Column Name ": "ReportId",
+            "Type": "string"
+        }
+    ]
+}
