@@ -8,6 +8,7 @@
 // is an alphanumerically named jargon.
 // 
 // My query detects the quick creation and deletion of the same task where the commandline has piped output that saves itself into the temp directory.
+// Also it excludes the computer accounts as computers apparently talk to other computers through RPC and Scheduled tasks a lot in the corporate environment.
 // 
 // Query:
 // 
@@ -17,7 +18,8 @@ DeviceEvents
 | where ActionType =~ "ScheduledTaskCreated"
 | extend TaskNameCr = tostring(parse_json(AdditionalFields).TaskName)
 | extend Args = extractjson('$.Actions.Exec.Arguments', tostring(parse_json(AdditionalFields).TaskContent))
-| where Args contains "temp" and Args contains "2>&1"
+| where Args matches regex @"(?i)(cmd|powershell|wscript|cscript|mshta|encoded|\.exe|\.bat|\.ps1)"
+| where InitiatingProcessAccountName !endswith "$"
 | project DevTime1, DeviceId, DeviceName, TaskNameCr, ActionType, InitiatingProcessAccountName, Args;
 // 
 DeviceEvents
@@ -26,4 +28,6 @@ DeviceEvents
 | join kind=inner hint.shufflekey=DeviceId ( TaskCreated ) on DeviceId
 | where abs(datetime_diff('second', DevTime1, DevTime2)) <= 3
 | extend TaskNameDl = tostring(parse_json(AdditionalFields).TaskName)
-| project Timestamp, DeviceName, TaskNameCr, InitiatingProcessAccountName, Args
+| where TaskNameDl == TaskNameCr
+| where InitiatingProcessAccountName !endswith "$"
+| project Timestamp, DeviceName, TaskNameCr, TaskNameDl, InitiatingProcessAccountName, Args
