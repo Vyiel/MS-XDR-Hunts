@@ -11,7 +11,8 @@ let RMMGitCSV =
     @"https://raw.githubusercontent.com/0x706972686f/RMM-Catalogue/refs/heads/main/rmm.csv"
     ]
     with(format="csv", ignoreFirstRecord="True")
-    | summarize make_list(tolower(Software));
+    | where isnotempty(Software)
+    | summarize by tolower(Software);
 //
 union DeviceTvmSoftwareInventory, DeviceProcessEvents
-| where tolower(SoftwareName) has_any (RMMGitCSV) or tolower(ProcessVersionInfoProductName) has_any (RMMGitCSV) or tolower(ProcessVersionInfoInternalFileName) has_any (RMMGitCSV)
+| where tolower(SoftwareName) in~ (RMMGitCSV) or tolower(ProcessVersionInfoProductName) in~ (RMMGitCSV)
